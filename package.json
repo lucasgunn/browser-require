@@ -1,0 +1,31 @@
+{
+	"name": "browser-require",
+	"version": "0.1.0",
+	"description": "A mini library to allow node style scripts to be 'require'ed into a local variable in the browser.",
+	"main": "src/browser-require.js",
+	"scripts": {
+		"test": "grunt test"
+	},
+	"devDependencies": {
+		"chai": "1.8.x",
+		"chai-datetime": "1.1.x",
+		"grunt": "0.4.x",
+		"grunt-contrib-connect": "0.6.x",
+		"grunt-contrib-jshint": "0.7.x",
+		"grunt-contrib-uglify": "0.2.x",
+		"grunt-contrib-watch": "0.5.x",
+		"grunt-mocha-phantomjs": "0.3.x",
+		"grunt-mocha-test": "0.7.x",
+		"mocha": "1.14.x"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/lucasgunn/browser-require.git"
+	},
+	"keywords": ["browser", "require"],
+	"author": "Lucas Gunn",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/lucasgunn/browser-require/issues"
+	}
+}
