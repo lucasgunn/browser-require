@@ -5,7 +5,7 @@ A mini library to allow node style scripts to be 'require'ed into a local variab
 ## We don't need no stinkin' documentation!
 Quick and dirty list of features here:
 
-	```JavaScript
+	```js
 	// Synchonous node.js style - don't use unless you know the implications!
 	var module = mrq('module_name.js');
 
@@ -38,7 +38,7 @@ Quick and dirty list of features here:
 
 An example module loaded by it should look like a standard node.js module
 
-	```JavaScript
+	```js
 	/**
 	*	Dummy module
 	*/
@@ -83,7 +83,7 @@ There are three ways to use this library in your project:
 local filesystem - ie: cordova or similar. Would seriously recommend against this in general use though.
 Slow loads will lock your UI! See example below:
 
-		```JavaScript
+		```js
 		var math = mrq('./modules/math.js');
 		math.sub(10); // <-- From test modules - would return 102000
 		```
@@ -92,7 +92,7 @@ Slow loads will lock your UI! See example below:
 the module with a normal async xhr call, and returns it to the supplied callback. Returns null on 
 syntax error or server error - 404, etc.
 
-		```JavaScript
+		```js
 		mrq('./modules/math.js', function(math) {
 			math.sub(10); // <-- From test modules - would return 102000
 		});
@@ -102,7 +102,7 @@ syntax error or server error - 404, etc.
 single call. It's syntax is a bit like require.js in that it will return the modules to the 
 callback in the order they were supplied as params. See example below:
 
-		```JavaScript
+		```js
 		mrq.multi(['./modules/math.js', './modules/string.js'], function(math, string) {
 			// From test modules - would return 102000
 			math.sub(10); 
@@ -115,7 +115,7 @@ callback in the order they were supplied as params. See example below:
 another local or network call + object construction. Should you need to force it to request again, you 
 can trash the cache for that module by calling:
 	
-		```JavaScript
+		```js
 		mrq.clear('./module_name.js');
 		```
 
@@ -124,7 +124,7 @@ can trash the cache for that module by calling:
 
 	You can also remove **all modules** in the cache by calling it without a param
 
-		```JavaScript
+		```js
 		mrq.clear();
 		```
 
