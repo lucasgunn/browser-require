@@ -5,6 +5,7 @@ A mini library to allow node style scripts to be 'require'ed into a local variab
 ## We don't need no stinkin' documentation!
 Quick and dirty list of features here:
 
+	```javascript
 	// Synchonous node.js style - don't use unless you know the implications!
 	var module = mrq('module_name.js');
 
@@ -33,9 +34,11 @@ Quick and dirty list of features here:
 
 	// You need to trash the entire cache
 	mrq.clear();
+	```
 
 An example module loaded by it should look like a standard node.js module
-	
+
+	```javascript
 	/**
 	*	Dummy module
 	*/
@@ -60,6 +63,7 @@ An example module loaded by it should look like a standard node.js module
 	module.exports = function(str) {
 		return private_var;
 	};
+	```
 
 ## Caveat
 As this depends on the `new Function` feature of javascript, which is a form of `eval`, 
@@ -79,49 +83,50 @@ There are three ways to use this library in your project:
 local filesystem - ie: cordova or similar. Would seriously recommend against this in general use though.
 Slow loads will lock your UI! See example below:
 
-		<script src="./dist/browser-require.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			var math = mrq('./modules/math.js');
-			math.sub(10); // <-- From test modules - would return 102000
-		</script>
+		```javascript
+		var math = mrq('./modules/math.js');
+		math.sub(10); // <-- From test modules - would return 102000
+		```
 
 * async style - **asynchronous**. This is the more normal use case for fetching a module. Fetches 
 the module with a normal async xhr call, and returns it to the supplied callback. Returns null on 
 syntax error or server error - 404, etc.
 
-		<script src="./dist/browser-require.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			mrq('./modules/math.js', function(math) {
-				math.sub(10); // <-- From test modules - would return 102000
-			});
-		</script>
+		```javascript
+		mrq('./modules/math.js', function(math) {
+			math.sub(10); // <-- From test modules - would return 102000
+		});
+		```
 
 * require.js styl(ish) - **asynchronous**. This one is handy for loading multiple modules in a 
 single call. It's syntax is a bit like require.js in that it will return the modules to the 
 callback in the order they were supplied as params. See example below:
 
-		<script src="./dist/browser-require.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			mrq.multi(['./modules/math.js', './modules/string.js'], function(math, string) {
-				// From test modules - would return 102000
-				math.sub(10); 
-				// From test modules - would return 'Awesome_string'
-				string.reverse('gnirts_emosewA'); 
-			});
-		</script>
+		```javascript
+		mrq.multi(['./modules/math.js', './modules/string.js'], function(math, string) {
+			// From test modules - would return 102000
+			math.sub(10); 
+			// From test modules - would return 'Awesome_string'
+			string.reverse('gnirts_emosewA'); 
+		});
+		```
 
 * clear cache - The module will cache the constructed modules so subsequent calls don't incur 
 another local or network call + object construction. Should you need to force it to request again, you 
 can trash the cache for that module by calling:
-
+	
+		```javascript
 		mrq.clear('./module_name.js');
+		```
 
 	The cache also has the upside of being able to use a module locally in lots of locations without 
 	there being a massive memory use either - they're all just pointers to the main one in the cache. 
 
 	You can also remove **all modules** in the cache by calling it without a param
 
+		```javascript
 		mrq.clear();
+		```
 
 	Note: If you check the uris generated on request, you'll note they're appended with a 
 	(?|&)_=timestamp, similar to jquery. This is to force the browser to actually re-request the 
