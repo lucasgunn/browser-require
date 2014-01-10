@@ -1,6 +1,7 @@
 # browser-require
 
-A mini library to allow node style scripts to be 'require'ed into a local variable in the browser.
+A micro (1.3Kb) library to allow node style scripts to be 'require'ed into a local variable in the browser. 
+As a result of it's micro size, the js variable became `window.mrq`
 
 ## We don't need no stinkin' documentation!
 Quick and dirty list of features here:
