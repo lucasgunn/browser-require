@@ -17,7 +17,7 @@ mrq('module_name.js', function(module) {
 });
 
 // Async multi style
-mrq.multi(['module1.js', 'module2.js'], function(module1, module2) {
+mrq.multi(['./path1/module1.js', './path2/dir2/module2.js'], function(module1, module2) {
 	if(module1) {
 		module1.do_something();
 	}
