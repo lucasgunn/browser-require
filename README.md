@@ -99,7 +99,7 @@ syntax error or server error - 404, etc.
 	```
 
 * require.js styl(ish) - **asynchronous**. This one is handy for loading multiple modules in a 
-single call. It's syntax is a bit like require.js in that it will return the modules to the 
+single call. It's syntax is like require.js in that it will return the modules to the 
 callback in the order they were supplied as params. See example below:
 
 	```js
