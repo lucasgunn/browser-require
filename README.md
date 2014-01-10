@@ -130,7 +130,7 @@ can trash the cache for that module by calling:
 
 	Note: If you check the uris generated on request, you'll note they're appended with a 
 	(?|&)_=timestamp, similar to jquery. This is to force the browser to actually re-request the 
-	file, note provide it from it's own cache.
+	file, not provide it from it's own memory/filesystem cache.
 
 ## Development requirements - ie: "Your code sucks and I'm gonna fix it..."
 
