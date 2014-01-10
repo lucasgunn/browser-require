@@ -34,6 +34,33 @@ Quick and dirty list of features here:
 	// You need to trash the entire cache
 	mrq.clear();
 
+An example module loaded by it should look like a standard node.js module
+	
+	/**
+	*	Dummy module
+	*/
+	/* jshint node:true */
+
+	"use strict";
+
+	var private_var = 'HereIsAPrivateVar';
+
+	exports.reverse = function(str) {
+		str = str.split('');
+		str.reverse();
+		return str.join('');
+	};
+
+	exports.sort = function(str) {
+		str = str.split('');
+		str.sort();
+		return str.join('');
+	};
+
+	module.exports = function(str) {
+		return private_var;
+	};
+
 ## Caveat
 As this depends on the `new Function` feature of javascript, which is a form of `eval`, 
 the same security issues to do with using `eval` apply - only use this to load from sources 
