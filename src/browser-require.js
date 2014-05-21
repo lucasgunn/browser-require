@@ -125,7 +125,7 @@
 			return null;
 		}
 
-		fn(window.get, module, exports);
+		fn(window.mrq, module, exports);
 
 		if(module.exports) {
 			retObj = module.exports;
